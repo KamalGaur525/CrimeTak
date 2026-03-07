@@ -1,0 +1,451 @@
+export interface NewsArticle {
+    id: number;
+    title: string;
+    excerpt: string;
+    image: string;
+    author: string;
+    date: string;
+    category: string;
+    categoryColor: string;
+    slug: string;
+    isVideo?: boolean;
+    videoUrl?: string;
+    readTime?: string;
+}
+
+export interface TrendingTopic {
+    id: number;
+    name: string;
+    count: string;
+}
+
+export interface MenuItem {
+    id: number;
+    label: string;
+    icon: string;
+    href: string;
+    badge?: string;
+}
+
+const categories = {
+    breaking: { name: "Breaking News", color: "bg-red-600 text-white" },
+    politics: { name: "Politics", color: "bg-blue-600 text-white" },
+    crime: { name: "Crime", color: "bg-gray-800 text-white" },
+    entertainment: { name: "Entertainment", color: "bg-purple-600 text-white" },
+    court: { name: "Court News", color: "bg-amber-600 text-white" },
+    investigation: { name: "Investigation", color: "bg-emerald-700 text-white" },
+    exclusive: { name: "Exclusive", color: "bg-primary text-white" },
+    videos: { name: "Videos", color: "bg-pink-600 text-white" },
+};
+
+export const breakingNews: NewsArticle[] = [
+    {
+        id: 1,
+        title: "Major Security Breach at International Airport Leads to Emergency Lockdown and Multi-Agency Investigation",
+        excerpt: "Authorities have initiated a comprehensive investigation following a major security breach at the international airport that led to a complete emergency lockdown. Multiple agencies are now coordinating efforts to determine the cause.",
+        image: "https://images.unsplash.com/photo-1585974738771-84483dd9f89f?w=800&h=500&fit=crop",
+        author: "Rajesh Kumar",
+        date: "March 7, 2026",
+        category: categories.breaking.name,
+        categoryColor: categories.breaking.color,
+        slug: "security-breach-airport-lockdown",
+        readTime: "5 min read",
+    },
+    {
+        id: 2,
+        title: "Supreme Court Issues Landmark Ruling on Digital Privacy Rights for Citizens",
+        excerpt: "The Supreme Court has passed a historic judgment that strengthens digital privacy protections for all citizens across the nation.",
+        image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop",
+        author: "Priya Sharma",
+        date: "March 7, 2026",
+        category: categories.court.name,
+        categoryColor: categories.court.color,
+        slug: "supreme-court-digital-privacy",
+        readTime: "4 min read",
+    },
+    {
+        id: 3,
+        title: "Cybercrime Ring Busted: Police Arrest 12 in Multi-State Fraud Operation",
+        excerpt: "Police have dismantled a sophisticated cybercrime network operating across multiple states, arresting 12 suspects.",
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+        author: "Amit Verma",
+        date: "March 7, 2026",
+        category: categories.crime.name,
+        categoryColor: categories.crime.color,
+        slug: "cybercrime-ring-busted-multi-state",
+        readTime: "3 min read",
+    },
+    {
+        id: 4,
+        title: "Parliament Passes New Anti-Corruption Bill Amid Opposition Walkout",
+        excerpt: "In a dramatic session, parliament has passed the new anti-corruption bill while opposition parties staged a walkout.",
+        image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&h=400&fit=crop",
+        author: "Sneha Patel",
+        date: "March 6, 2026",
+        category: categories.politics.name,
+        categoryColor: categories.politics.color,
+        slug: "parliament-anti-corruption-bill",
+        readTime: "6 min read",
+    } 
+];
+
+export const entertainmentNews: NewsArticle[] = [
+    {
+        id: 10,
+        title: "Bollywood Star Announces Comeback Film After 5-Year Hiatus",
+        excerpt: "The beloved Bollywood icon has announced their much-anticipated return to cinema with a new thriller.",
+        image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=400&fit=crop",
+        author: "Neha Kapoor",
+        date: "March 7, 2026",
+        category: categories.entertainment.name,
+        categoryColor: categories.entertainment.color,
+        slug: "bollywood-star-comeback-film",
+        readTime: "3 min read",
+    },
+    {
+        id: 11,
+        title: "Music Festival Season Kicks Off with Record-Breaking Attendance",
+        excerpt: "The annual music festival season has commenced with unprecedented attendance numbers across the country.",
+        image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&h=400&fit=crop",
+        author: "Arjun Mehta",
+        date: "March 6, 2026",
+        category: categories.entertainment.name,
+        categoryColor: categories.entertainment.color,
+        slug: "music-festival-record-attendance",
+        readTime: "2 min read",
+    },
+    {
+        id: 12,
+        title: "Award-Winning Director Reveals Plot Details of Upcoming Crime Thriller",
+        excerpt: "The acclaimed director has given fans a peek into the plot of the highly anticipated crime thriller movie.",
+        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop",
+        author: "Ritu Desai",
+        date: "March 6, 2026",
+        category: categories.entertainment.name,
+        categoryColor: categories.entertainment.color,
+        slug: "director-upcoming-crime-thriller",
+        readTime: "3 min read",
+    },
+    {
+        id: 13,
+        title: "Streaming Platform Breaks Records with New Original Series Launch",
+        excerpt: "A major streaming platform has shattered viewership records with the launch of its new original series.",
+        image: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=600&h=400&fit=crop",
+        author: "Karan Jodhpur",
+        date: "March 5, 2026",
+        category: categories.entertainment.name,
+        categoryColor: categories.entertainment.color,
+        slug: "streaming-platform-records",
+        readTime: "2 min read",
+    },
+    {
+        id: 14,
+        title: "Independent Film Wins Global Recognition at International Festival",
+        excerpt: "An independent film from India has won top honors at a prestigious international film festival.",
+        image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=400&fit=crop",
+        author: "Divya Nair",
+        date: "March 5, 2026",
+        category: categories.entertainment.name,
+        categoryColor: categories.entertainment.color,
+        slug: "indie-film-global-recognition",
+        readTime: "3 min read",
+    },
+];
+
+export const videoNews: NewsArticle[] = [
+    {
+        id: 20,
+        title: "WATCH: Dramatic Chase Footage Released by Police After Highway Pursuit",
+        excerpt: "Police have released dramatic footage from a high-speed highway pursuit that ended in the arrest of suspects.",
+        image: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&h=500&fit=crop",
+        author: "Crime Tak Bureau",
+        date: "March 7, 2026",
+        category: categories.videos.name,
+        categoryColor: categories.videos.color,
+        slug: "dramatic-chase-footage-police",
+        isVideo: true,
+        readTime: "Video • 8:45",
+    },
+    {
+        id: 21,
+        title: "CCTV Captures Daring Robbery at Jewelry Store in Broad Daylight",
+        excerpt: "Security cameras have captured footage of an audacious jewelry store robbery that occurred in broad daylight.",
+        image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop",
+        author: "Crime Tak Bureau",
+        date: "March 7, 2026",
+        category: categories.videos.name,
+        categoryColor: categories.videos.color,
+        slug: "cctv-jewelry-robbery",
+        isVideo: true,
+        readTime: "Video • 5:30",
+    },
+    {
+        id: 22,
+        title: "Exclusive Interview: Whistleblower Reveals Government Cover-Up in Scandal",
+        excerpt: "In an exclusive interview, a whistleblower has revealed shocking details of a government cover-up.",
+        image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop",
+        author: "Rajesh Kumar",
+        date: "March 6, 2026",
+        category: categories.videos.name,
+        categoryColor: categories.videos.color,
+        slug: "whistleblower-government-cover-up",
+        isVideo: true,
+        readTime: "Video • 12:15",
+    },
+    {
+        id: 23,
+        title: "Live Coverage: Massive Protest Rally in Capital Over New Policy Changes",
+        excerpt: "Thousands have taken to the streets in the capital to protest against recently announced policy changes.",
+        image: "https://images.unsplash.com/photo-1591848478625-de43268e6fb8?w=600&h=400&fit=crop",
+        author: "Crime Tak Bureau",
+        date: "March 6, 2026",
+        category: categories.videos.name,
+        categoryColor: categories.videos.color,
+        slug: "protest-rally-capital-coverage",
+        isVideo: true,
+        readTime: "Video • 15:20",
+    },
+    {
+        id: 24,
+        title: "Ground Report: Flood Victims Share Harrowing Tales of Survival",
+        excerpt: "Our ground reporters bring you first-hand accounts from flood victims who survived the devastating disaster.",
+        image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=600&h=400&fit=crop",
+        author: "Priya Sharma",
+        date: "March 5, 2026",
+        category: categories.videos.name,
+        categoryColor: categories.videos.color,
+        slug: "flood-victims-survival-tales",
+        isVideo: true,
+        readTime: "Video • 10:00",
+    },
+];
+
+export const politicsNews: NewsArticle[] = [
+    {
+        id: 30,
+        title: "Election Commission Announces Schedule for Upcoming State Elections in Five States",
+        excerpt: "The Election Commission has officially announced the schedule for the upcoming state elections set to take place across five states in the coming months.",
+        image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&h=500&fit=crop",
+        author: "Political Bureau",
+        date: "March 7, 2026",
+        category: categories.politics.name,
+        categoryColor: categories.politics.color,
+        slug: "election-commission-schedule-five-states",
+        readTime: "5 min read",
+    },
+    {
+        id: 31,
+        title: "Opposition Alliance Holds Emergency Meeting to Discuss Parliamentary Strategy",
+        excerpt: "Leaders from all opposition parties met in an emergency session to discuss their unified parliamentary strategy.",
+        image: "https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=600&h=400&fit=crop",
+        author: "Political Bureau",
+        date: "March 6, 2026",
+        category: categories.politics.name,
+        categoryColor: categories.politics.color,
+        slug: "opposition-alliance-emergency-meeting",
+        readTime: "4 min read",
+    },
+    {
+        id: 32,
+        title: "Cabinet Reshuffle Expected as PM Meets Senior Party Leaders for Discussions",
+        excerpt: "A major cabinet reshuffle is expected as the Prime Minister holds extensive meetings with senior party leaders.",
+        image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop",
+        author: "Sneha Patel",
+        date: "March 6, 2026",
+        category: categories.politics.name,
+        categoryColor: categories.politics.color,
+        slug: "cabinet-reshuffle-pm-meetings",
+        readTime: "3 min read",
+    },
+    {
+        id: 33,
+        title: "New Education Policy: States Divided on Implementation of Proposed Reforms",
+        excerpt: "The new education policy has created a divide among states with some supporting and others opposing its implementation.",
+        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop",
+        author: "Amit Verma",
+        date: "March 5, 2026",
+        category: categories.politics.name,
+        categoryColor: categories.politics.color,
+        slug: "education-policy-states-divided",
+        readTime: "5 min read",
+    },
+];
+
+export const courtNews: NewsArticle[] = [
+    {
+        id: 40,
+        title: "High Court Stays Execution in Controversial Death Penalty Case Pending Review",
+        excerpt: "The High Court has issued a stay on the execution in a controversial death penalty case, ordering a comprehensive review of all evidence presented.",
+        image: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=800&h=500&fit=crop",
+        author: "Legal Bureau",
+        date: "March 7, 2026",
+        category: categories.court.name,
+        categoryColor: categories.court.color,
+        slug: "high-court-stays-execution",
+        readTime: "6 min read",
+    },
+    {
+        id: 41,
+        title: "Supreme Court Takes Suo Motu Cognizance of Rising Juvenile Crime Cases",
+        excerpt: "The Supreme Court has taken suo motu cognizance of the alarming rise in juvenile crime cases across the country.",
+        image: "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=600&h=400&fit=crop",
+        author: "Legal Bureau",
+        date: "March 6, 2026",
+        category: categories.court.name,
+        categoryColor: categories.court.color,
+        slug: "supreme-court-juvenile-crime",
+        readTime: "4 min read",
+    },
+    {
+        id: 42,
+        title: "Gangster's Bail Plea Rejected: Court Says Flight Risk Too High",
+        excerpt: "The court has rejected the bail plea of a notorious gangster, citing extremely high flight risk and potential witness tampering.",
+        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop",
+        author: "Vikram Singh",
+        date: "March 5, 2026",
+        category: categories.court.name,
+        categoryColor: categories.court.color,
+        slug: "gangster-bail-plea-rejected",
+        readTime: "3 min read",
+    },
+    {
+        id: 43,
+        title: "Landmark Verdict: Court Orders Compensation for Wrongfully Imprisoned Citizens",
+        excerpt: "In a landmark verdict, the court has ordered substantial compensation for citizens who were wrongfully imprisoned.",
+        image: "https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?w=600&h=400&fit=crop",
+        author: "Priya Sharma",
+        date: "March 5, 2026",
+        category: categories.court.name,
+        categoryColor: categories.court.color,
+        slug: "landmark-verdict-compensation",
+        readTime: "5 min read",
+    },
+];
+
+export const investigationNews: NewsArticle[] = [
+    {
+        id: 50,
+        title: "Deep Dive: How AI-Powered Surveillance Is Reshaping Crime Detection Across Major Cities",
+        excerpt: "An investigative report into how artificial intelligence and machine learning technologies are being deployed by police departments to predict, detect, and prevent crime.",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=500&fit=crop",
+        author: "Investigative Desk",
+        date: "March 7, 2026",
+        category: categories.investigation.name,
+        categoryColor: categories.investigation.color,
+        slug: "ai-surveillance-reshaping-crime-detection",
+        readTime: "8 min read",
+    },
+    {
+        id: 51,
+        title: "Drug Cartel Network Exposed: International Operation Reveals Shocking Links",
+        excerpt: "An international investigation has exposed a sprawling drug cartel network with shocking links to legitimate businesses.",
+        image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=600&h=400&fit=crop",
+        author: "Investigative Desk",
+        date: "March 6, 2026",
+        category: categories.investigation.name,
+        categoryColor: categories.investigation.color,
+        slug: "drug-cartel-network-exposed",
+        readTime: "10 min read",
+    },
+    {
+        id: 52,
+        title: "Money Trail: Investigation Reveals Laundering Through Real Estate Empire",
+        excerpt: "An in-depth investigation has uncovered a massive money laundering operation hidden behind a sprawling real estate empire.",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
+        author: "Rajesh Kumar",
+        date: "March 5, 2026",
+        category: categories.investigation.name,
+        categoryColor: categories.investigation.color,
+        slug: "money-trail-real-estate-laundering",
+        readTime: "7 min read",
+    },
+    {
+        id: 53,
+        title: "Undercover Sting: Fake Documents Racket Operating Near Government Offices",
+        excerpt: "An undercover investigation has busted a fake documents racket operating brazenly near government offices.",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
+        author: "Amit Verma",
+        date: "March 4, 2026",
+        category: categories.investigation.name,
+        categoryColor: categories.investigation.color,
+        slug: "fake-documents-racket-busted",
+        readTime: "6 min read",
+    },
+];
+
+export const exclusiveNews: NewsArticle[] = [
+    {
+        id: 60,
+        title: "EXCLUSIVE: Insider Account of the Operation That Took Down the Country's Most Wanted Criminal",
+        excerpt: "For the first time, operatives involved in the dramatic takedown of the country's most wanted criminal share their insider account of the operation that lasted 72 hours.",
+        image: "https://images.unsplash.com/photo-1453873531674-2151bcd01707?w=800&h=500&fit=crop",
+        author: "Special Correspondent",
+        date: "March 7, 2026",
+        category: categories.exclusive.name,
+        categoryColor: categories.exclusive.color,
+        slug: "exclusive-most-wanted-takedown",
+        readTime: "12 min read",
+    },
+    {
+        id: 61,
+        title: "EXCLUSIVE: Former Intelligence Officer Reveals Untold Stories of Covert Ops",
+        excerpt: "A retired intelligence officer breaks silence and reveals untold stories of covert operations that shaped national security.",
+        image: "https://images.unsplash.com/photo-1516728778615-2d590ea1855e?w=600&h=400&fit=crop",
+        author: "Special Correspondent",
+        date: "March 6, 2026",
+        category: categories.exclusive.name,
+        categoryColor: categories.exclusive.color,
+        slug: "former-intel-officer-covert-ops",
+        readTime: "9 min read",
+    },
+    {
+        id: 62,
+        title: "EXCLUSIVE: Victims Speak Out About Police Inaction in Serial Crime Cases",
+        excerpt: "Multiple victims have come forward to speak about alleged police inaction in a series of connected crime cases.",
+        image: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=600&h=400&fit=crop",
+        author: "Priya Sharma",
+        date: "March 5, 2026",
+        category: categories.exclusive.name,
+        categoryColor: categories.exclusive.color,
+        slug: "victims-speak-police-inaction",
+        readTime: "7 min read",
+    },
+    {
+        id: 63,
+        title: "EXCLUSIVE: Inside the Training Camp that Produces Elite Anti-Terror Commandos",
+        excerpt: "A rare look inside the secretive training camp where elite anti-terror commandos are forged through intense training.",
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
+        author: "Vikram Singh",
+        date: "March 4, 2026",
+        category: categories.exclusive.name,
+        categoryColor: categories.exclusive.color,
+        slug: "elite-anti-terror-commandos-training",
+        readTime: "8 min read",
+    },
+];
+
+export const trendingTopics: TrendingTopic[] = [
+    { id: 1, name: "Supreme Court", count: "2.4K" },
+    { id: 2, name: "Cybercrime", count: "1.8K" },
+    { id: 3, name: "Election 2026", count: "3.1K" },
+    { id: 4, name: "Airport Security", count: "1.2K" },
+    { id: 5, name: "Drug Cartel", count: "956" },
+    { id: 6, name: "Anti-Corruption", count: "1.5K" },
+    { id: 7, name: "Digital Privacy", count: "2.1K" },
+    { id: 8, name: "Whistleblower", count: "890" },
+    { id: 9, name: "Police Reform", count: "1.1K" },
+    { id: 10, name: "Juvenile Crime", count: "780" },
+];
+
+export const menuItems: MenuItem[] = [
+    { id: 1, label: "Home", icon: "Home", href: "/" },
+    { id: 2, label: "Breaking News", icon: "Zap", href: "/breaking", badge: "LIVE" },
+    { id: 3, label: "Politics", icon: "Landmark", href: "/politics" },
+    { id: 4, label: "Crime", icon: "Shield", href: "/crime" },
+    { id: 5, label: "Entertainment", icon: "Film", href: "/entertainment" },
+    { id: 6, label: "Videos", icon: "PlayCircle", href: "/videos" },
+    { id: 7, label: "Court News", icon: "Scale", href: "/court" },
+    { id: 8, label: "Investigation", icon: "Search", href: "/investigation" },
+    { id: 9, label: "Exclusive", icon: "Star", href: "/exclusive" },
+    { id: 10, label: "Interviews", icon: "Mic", href: "/interviews" },
+];
