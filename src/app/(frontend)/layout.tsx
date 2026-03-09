@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function FrontendLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -33,10 +33,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-bg-main">
-        {/* <Header /> */}
+        <Header />
         {children}
         {/* Footer */}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

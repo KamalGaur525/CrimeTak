@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { NewsArticle } from "../data/mockData";
-import NewsCard from "./NewsCard";
+import { NewsArticle } from "@/types/article";
+import NewsCard from "@/components/NewsCard";
 
 interface CategorySectionProps {
     title: string;

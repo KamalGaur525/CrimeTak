@@ -1,31 +1,4 @@
-export interface NewsArticle {
-    id: number;
-    title: string;
-    excerpt: string;
-    image: string;
-    author: string;
-    date: string;
-    category: string;
-    categoryColor: string;
-    slug: string;
-    isVideo?: boolean;
-    videoUrl?: string;
-    readTime?: string;
-}
-
-export interface TrendingTopic {
-    id: number;
-    name: string;
-    count: string;
-}
-
-export interface MenuItem {
-    id: number;
-    label: string;
-    icon: string;
-    href: string;
-    badge?: string;
-}
+import { NewsArticle, TrendingTopic, MenuItem } from "@/types/article";
 
 const categories = {
     breaking: { name: "Breaking News", color: "bg-red-600 text-white" },
@@ -86,7 +59,7 @@ export const breakingNews: NewsArticle[] = [
         categoryColor: categories.politics.color,
         slug: "parliament-anti-corruption-bill",
         readTime: "6 min read",
-    } 
+    }
 ];
 
 export const entertainmentNews: NewsArticle[] = [

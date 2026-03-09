@@ -5,13 +5,14 @@ import {
     Search,
     Menu,
     X,
- MessageCircle,
+    MessageCircle,
     Sun,
     Moon,
     Youtube,
     Twitter,
-    Facebook, 
+    Facebook,
     Instagram,
+     LayoutDashboard
 } from "lucide-react";
 
 export default function Header() {
@@ -29,13 +30,13 @@ export default function Header() {
         "Exclusive",
     ];
     const news = [
-  "Major Security Breach at Airport",
-  "Supreme Court Landmark Ruling on Digital Privacy",
-  "Cybercrime Ring Busted in Multi-State Operation",
-  "Parliament Passes Anti-Corruption Bill",
-  "Election Commission Announces Schedule",
-  "Stock Market Hits Record High",
-];
+        "Major Security Breach at Airport",
+        "Supreme Court Landmark Ruling on Digital Privacy",
+        "Cybercrime Ring Busted in Multi-State Operation",
+        "Parliament Passes Anti-Corruption Bill",
+        "Election Commission Announces Schedule",
+        "Stock Market Hits Record High",
+    ];
 
     return (
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
@@ -48,21 +49,21 @@ export default function Header() {
                     </span>
                     <div className="overflow-hidden flex-1">
                         <div className="overflow-hidden flex-1 ticker-wrapper">
-  <div className="ticker-track">
+                            <div className="ticker-track">
 
-    {[...news, ...news].map((item, i) => (
-      <span key={i} className="ticker-item flex items-center gap-2">
-        <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
-        {item}
-      </span>
-    ))}
+                                {[...news, ...news].map((item, i) => (
+                                    <span key={i} className="ticker-item flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
+                                        {item}
+                                    </span>
+                                ))}
 
-  </div>
-</div>
+                            </div>
+                        </div>
                     </div>
                     <span className="flex-shrink-0 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider">
-                       News  <span className="w-2 h-2 bg-white rounded-full pulse-dot" />
-                      
+                        News  <span className="w-2 h-2 bg-white rounded-full pulse-dot" />
+
                     </span>
                 </div>
             </div>
@@ -119,15 +120,22 @@ export default function Header() {
                         >
                             <Search size={20} className="text-text-gray" />
                         </button>
+                           <a
+        href="/admin"
+        className="p-2 rounded-lg hover:bg-blue-50 transition-colors"
+        aria-label="Admin Panel"
+    >
+        <LayoutDashboard size={20} className="text-text-gray hover:text-blue-600" />
+    </a>
 
-                       <button
-  className="p-2 rounded-lg hover:bg-green-50 transition-colors relative group"
-  aria-label="WhatsApp"
->
-  <MessageCircle size={20} className="text-text-gray group-hover:text-green-600" />
+                        <button
+                            className="p-2 rounded-lg hover:bg-green-50 transition-colors relative group"
+                            aria-label="WhatsApp"
+                        >
+                            <MessageCircle size={20} className="text-text-gray group-hover:text-green-600" />
 
-  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-green-500 rounded-full" />
-</button>
+                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-green-500 rounded-full" />
+                        </button>
 
                         <div className="hidden lg:flex items-center gap-1 ml-2 pl-3 border-l border-gray-200">
                             <a href="#" className="p-1.5 rounded-lg hover:bg-red-50 hover:text-red-600 text-gray-400 transition-colors" aria-label="YouTube">
@@ -156,8 +164,8 @@ export default function Header() {
                                 key={item}
                                 href={`/${item.toLowerCase()}`}
                                 className={`px-3.5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors rounded-lg ${index === 0
-                                        ? "text-primary"
-                                        : "text-text-dark hover:text-primary hover:bg-red-50/50"
+                                    ? "text-primary"
+                                    : "text-text-dark hover:text-primary hover:bg-red-50/50"
                                     }`}
                             >
                                 {item}

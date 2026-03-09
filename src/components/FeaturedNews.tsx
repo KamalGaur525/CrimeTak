@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock, User, ArrowRight } from "lucide-react";
-import { NewsArticle } from "../data/mockData";
+import { NewsArticle } from "@/types/article";
 
 interface FeaturedNewsProps {
     mainArticle: NewsArticle;

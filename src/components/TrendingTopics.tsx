@@ -1,7 +1,7 @@
 "use client";
 
 import { TrendingUp, Play, ExternalLink } from "lucide-react";
-import { trendingTopics, videoNews } from "../data/mockData";
+import { trendingTopics, videoNews } from "@/data/mockData";
 
 export default function TrendingTopics() {
     const popularVideos = videoNews.slice(0, 4);

@@ -1,7 +1,7 @@
 "use client";
 
 import { Play, Clock } from "lucide-react";
-import { NewsArticle } from "../data/mockData";
+import { NewsArticle } from "@/types/article";
 
 interface VideoCardProps {
     article: NewsArticle;

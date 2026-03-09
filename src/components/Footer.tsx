@@ -13,7 +13,7 @@ import {
     Smartphone,
     ChevronRight,
 } from "lucide-react";
-import { breakingNews, politicsNews, courtNews } from "../data/mockData";
+import { breakingNews, politicsNews, courtNews } from "@/data/mockData";
 
 export default function Footer() {
     const latestArticles = [...breakingNews, ...politicsNews, ...courtNews].slice(
@@ -53,15 +53,15 @@ export default function Footer() {
     return (
         <footer className="bg-bg-sidebar text-gray-300 mt-12 relative">
             {/* Back to Top */}
-          <div className="fixed bottom-6 right-6 z-50">
-    <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="bg-primary hover:bg-primary-dark text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
-        aria-label="Back to top"
-    >
-        <ArrowUp size={18} />
-    </button>
-</div>
+            <div className="fixed bottom-6 right-6 z-50">
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                    className="bg-primary hover:bg-primary-dark text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                    aria-label="Back to top"
+                >
+                    <ArrowUp size={18} />
+                </button>
+            </div>
 
             <div className="max-w-[1400px] mx-auto px-4 pt-12 pb-6">
                 {/* Top Section - 4 columns */}

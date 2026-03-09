@@ -1,10 +1,10 @@
 
-import Sidebar from "./components/Sidebar";
-import FeaturedNews from "./components/FeaturedNews";
-import EntertainmentSection from "./components/EntertainmentSection";
-import VideoSection from "./components/VideoSection";
-import CategorySection from "./components/CategorySection";
-import TrendingTopics from "./components/TrendingTopics"; 
+import Sidebar from "@/components/Sidebar";
+import FeaturedNews from "@/components/FeaturedNews";
+import EntertainmentSection from "@/components/EntertainmentSection";
+import VideoSection from "@/components/VideoSection";
+import CategorySection from "@/components/CategorySection";
+import TrendingTopics from "@/components/TrendingTopics";
 import {
   breakingNews,
   entertainmentNews,
@@ -13,14 +13,14 @@ import {
   courtNews,
   investigationNews,
   exclusiveNews,
-} from "./data/mockData";
+} from "@/data/mockData";
 import { Landmark, Scale, Search, Star } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-bg-main">
       {/* Header */}
-    
+
 
       {/* Main 3-Column Layout */}
       <div className="max-w-[1400px] mx-auto px-4 py-6">
@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </div>
 
-     
+
     </div>
   );
 }

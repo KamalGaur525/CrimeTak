@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowRight, PlayCircle } from "lucide-react";
-import { NewsArticle } from "../data/mockData";
-import VideoCard from "./VideoCard";
+import { NewsArticle } from "@/types/article";
+import VideoCard from "@/components/VideoCard";
 
 interface VideoSectionProps {
     articles: NewsArticle[];

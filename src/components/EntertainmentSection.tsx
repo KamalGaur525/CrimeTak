@@ -2,7 +2,7 @@
 
 import { ArrowRight, ChevronLeft, ChevronRight, Film } from "lucide-react";
 import { useRef } from "react";
-import { NewsArticle } from "../data/mockData";
+import { NewsArticle } from "@/types/article";
 
 interface EntertainmentSectionProps {
     articles: NewsArticle[];
