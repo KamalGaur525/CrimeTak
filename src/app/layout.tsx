@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 export const metadata: Metadata = {
   title: "CrimeTak - Fearless Journalism | Crime News, Investigation & Justice",
   description:
@@ -32,8 +33,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-bg-main">
-        
-        {children}</body>
+          <Header />
+        {children}
+         {/* Footer */}
+      <Footer />
+        </body>
     </html>
   );
 }
