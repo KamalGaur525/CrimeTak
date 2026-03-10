@@ -7,13 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now())
+
+  articles  Article[]
+}
+
 model Article {
-  id        String   @id @default(cuid())
-  title     String
-  slug      String   @unique
-  content   String   @db.LongText
-  image     String
-  author    String
-  category  String
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  title      String
+  slug       String   @unique
+  content    String   @db.LongText
+  image      String
+  author     String
+
+  categoryId Int
+   category   Category @relation(
+    fields: [categoryId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  createdAt  DateTime @default(now())
 }

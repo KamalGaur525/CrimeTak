@@ -1,10 +1,10 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { slugify } from "@/lib/slugify";
 import RichTextEditor from "../_components/RichTextEditor";
+ 
 import {
   Upload,
   Image as ImageIcon,
@@ -20,17 +20,7 @@ interface ArticleFormData {
   category: string;
 }
 
-const categories = [
-  "Breaking News",
-  "Politics",
-  "Crime",
-  "Entertainment",
-  "Court News",
-  "Investigation",
-  "Exclusive",
-  "Videos",
-];
-
+ 
 export default function CreateArticlePage() {
   const router = useRouter();
   const [content, setContent] = useState("");
@@ -57,6 +47,17 @@ export default function CreateArticlePage() {
     setValue("title", title);
     setValue("slug", slugify(title));
   };
+const [categories, setCategories] = useState<any[]>([]);
+
+useEffect(() => {
+  async function fetchCategories() {
+    const res = await fetch("/api/categories");
+    const data = await res.json();
+    setCategories(data);
+  }
+
+  fetchCategories();
+}, []);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -210,11 +211,12 @@ export default function CreateArticlePage() {
           </label>
 
           <input
-            type="text"
-            {...register("slug", { required: "Slug is required" })}
-            className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-lg text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500"
-            placeholder="auto-generated-slug"
-          />
+  type="text"
+  {...register("slug", { required: "Slug is required" })}
+  readOnly
+  className="w-full px-4 py-3 bg-gray-100 border border-[#E2E8F0] rounded-lg text-gray-500 cursor-not-allowed"
+  placeholder="auto-generated-slug"
+/>
 
           {errors.slug && (
             <p className="mt-1 text-sm text-red-500">
@@ -254,17 +256,18 @@ export default function CreateArticlePage() {
             </label>
 
             <select
-              {...register("category", { required: "Category is required" })}
-              className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-lg text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
-            >
-              <option value="">Select category</option>
+  {...register("category", { required: "Category is required" })}
+  className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-lg text-[#0F172A]"
+>
+  <option value="">Select category</option>
 
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+  {categories.map((cat) => (
+    <option key={cat.id} value={cat.id}>
+      {cat.name}
+    </option>
+  ))}
+
+</select>
 
             {errors.category && (
               <p className="mt-1 text-sm text-red-500">

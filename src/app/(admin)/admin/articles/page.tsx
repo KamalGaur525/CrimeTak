@@ -10,6 +10,7 @@ import {
   Tag,
   Loader2,
   PenSquare,
+  Trash2,
 } from "lucide-react";
 
 interface Article {
@@ -18,31 +19,63 @@ interface Article {
   slug: string;
   image: string;
   author: string;
-  category: string;
   createdAt: string;
+  category: {
+    id: number;
+    name: string;
+  };
 }
 
 export default function ArticlesListPage() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
 
+  /* FETCH ARTICLES */
+
   useEffect(() => {
     async function fetchArticles() {
       try {
         const res = await fetch("/api/articles");
+
         if (res.ok) {
-          setArticles(await res.json());
+          const data = await res.json();
+          setArticles(data);
         }
       } catch {}
+
       finally {
         setLoading(false);
       }
     }
+
     fetchArticles();
   }, []);
 
+  /* DELETE ARTICLE */
+
+  const deleteArticle = async (id: string) => {
+    const confirmDelete = confirm("Delete this article?");
+
+    if (!confirmDelete) return;
+
+    try {
+      await fetch("/api/articles", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      setArticles((prev) => prev.filter((a) => a.id !== id));
+    } catch {
+      alert("Failed to delete article");
+    }
+  };
+
   return (
     <div>
+
       {/* Header */}
 
       <div className="flex items-center justify-between mb-8">
@@ -67,7 +100,6 @@ export default function ArticlesListPage() {
 
       </div>
 
-
       {/* Loading */}
 
       {loading ? (
@@ -85,10 +117,6 @@ export default function ArticlesListPage() {
           <h2 className="text-xl font-semibold text-gray-600 mb-2">
             No articles yet
           </h2>
-
-          <p className="text-gray-500 text-sm mb-6">
-            Articles you publish from the CMS will appear here
-          </p>
 
           <Link
             href="/admin/create"
@@ -112,10 +140,9 @@ export default function ArticlesListPage() {
             <div className="col-span-2">Author</div>
             <div className="col-span-2">Category</div>
             <div className="col-span-2">Date</div>
-            <div className="col-span-1">Link</div>
+            <div className="col-span-1">Actions</div>
 
           </div>
-
 
           {/* Rows */}
 
@@ -146,19 +173,15 @@ export default function ArticlesListPage() {
 
               </div>
 
-
               {/* Author */}
 
               <div className="col-span-2 flex items-center gap-1.5 text-sm text-[#64748B]">
 
                 <User size={13} className="text-gray-400 flex-shrink-0" />
 
-                <span className="truncate">
-                  {article.author}
-                </span>
+                {article.author}
 
               </div>
-
 
               {/* Category */}
 
@@ -166,43 +189,53 @@ export default function ArticlesListPage() {
 
                 <Tag size={13} className="text-gray-400 flex-shrink-0" />
 
-                <span className="text-xs font-medium text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full truncate">
-                  {article.category}
+                <span className="text-xs font-medium">
+                  {article.category?.name}
                 </span>
 
               </div>
-
 
               {/* Date */}
 
               <div className="col-span-2 flex items-center gap-1.5 text-sm text-[#64748B]">
 
-                <Calendar size={13} className="flex-shrink-0" />
+                <Calendar size={13} />
 
-                <span className="truncate">
-                  {new Date(article.createdAt).toLocaleDateString("en-IN", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </span>
+                {new Date(article.createdAt).toLocaleDateString("en-IN")}
 
               </div>
 
+              {/* Actions */}
 
-              {/* Link */}
+              <div className="col-span-1 flex items-center gap-2">
 
-              <div className="col-span-1">
+                {/* View */}
 
                 <Link
                   href={`/article/${article.slug}`}
-                  className="w-8 h-8 rounded-lg bg-gray-100 hover:bg-red-100 flex items-center justify-center transition"
                   target="_blank"
+                  className="w-8 h-8   flex items-center justify-center text-yellow-500"
                 >
-
-                  <ExternalLink size={14} className="text-gray-500" />
-
+                  <ExternalLink size={14} />
                 </Link>
+
+                {/* Edit */}
+
+                <Link
+                  href={`/admin/articles/edit/${article.id}`}
+                  className="w-8 h-8  flex items-center justify-center text-green-500"
+                >
+                  <PenSquare size={14} />
+                </Link>
+
+                {/* Delete */}
+
+                <button
+                  onClick={() => deleteArticle(article.id)}
+                  className="w-8 h-8   flex items-center justify-center text-red-500"
+                >
+                  <Trash2 size={14} />
+                </button>
 
               </div>
 

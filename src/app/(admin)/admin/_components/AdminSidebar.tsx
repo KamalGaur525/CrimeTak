@@ -8,14 +8,15 @@ import {
   FileText,
   ArrowLeft,
   Newspaper,
+  Folder
 } from "lucide-react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/create", label: "Create Article", icon: PenSquare },
   { href: "/admin/articles", label: "All Articles", icon: FileText },
+  { href: "/admin/categories", label: "Categories", icon: Folder },
 ];
-
 export default function AdminSidebar() {
   const pathname = usePathname();
 

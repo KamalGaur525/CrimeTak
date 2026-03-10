@@ -15,8 +15,11 @@ interface DashboardStats {
   recentArticles: {
     title: string;
     slug: string;
-    category: string;
     createdAt: string;
+    category: {
+      id: number;
+      name: string;
+    };
   }[];
 }
 
@@ -264,7 +267,7 @@ export default function AdminDashboard() {
                     </p>
 
                     <p className="text-[#64748B] text-xs mt-0.5">
-                      {article.category} •{" "}
+                      {article.category?.name} •{" "}
                       {new Date(article.createdAt).toLocaleDateString()}
                     </p>
 

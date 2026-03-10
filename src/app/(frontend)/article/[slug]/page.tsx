@@ -88,7 +88,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 {/* Bottom Navigation */}
                 <div className="mt-12 pt-6 border-t border-border">
                     <Link
-                        href="/"
+                        href="/admin/articles"
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
                     >
                         <ArrowLeft size={16} />
