@@ -1,5 +1,6 @@
 "use client";
 
+        import { signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
@@ -12,6 +13,7 @@ import {
 
 interface DashboardStats {
   totalArticles: number;
+  totalCategories: number;
   recentArticles: {
     title: string;
     slug: string;
@@ -24,32 +26,40 @@ interface DashboardStats {
 }
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState<DashboardStats>({
-    totalArticles: 0,
-    recentArticles: [],
-  });
-
+const [stats, setStats] = useState<DashboardStats>({
+  totalArticles: 0,
+  totalCategories: 0,
+  recentArticles: [],
+});
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchStats() {
-      try {
-        const res = await fetch("/api/articles");
-        if (res.ok) {
-          const articles = await res.json();
-          setStats({
-            totalArticles: articles.length,
-            recentArticles: articles.slice(0, 5),
-          });
-        }
-      } catch {}
-      finally {
-        setLoading(false);
-      }
-    }
+useEffect(() => {
+  async function fetchStats() {
+    try {
 
-    fetchStats();
-  }, []);
+      const [articlesRes, categoriesRes] = await Promise.all([
+        fetch("/api/articles"),
+        fetch("/api/categories"),
+      ]);
+
+      const articles = articlesRes.ok ? await articlesRes.json() : [];
+      const categories = categoriesRes.ok ? await categoriesRes.json() : [];
+
+      setStats({
+        totalArticles: articles.length,
+        totalCategories: categories.length,
+        recentArticles: articles.slice(0, 5),
+      });
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchStats();
+}, []);
 
   const statCards = [
     {
@@ -65,11 +75,11 @@ export default function AdminDashboard() {
       color: "bg-blue-100 text-blue-600",
     },
     {
-      label: "Categories",
-      value: "8",
-      icon: Clock,
-      color: "bg-amber-100 text-amber-600",
-    },
+  label: "Categories",
+  value: loading ? "—" : stats.totalCategories.toString(),
+  icon: Clock,
+  color: "bg-amber-100 text-amber-600",
+},
   ];
 
   return (
@@ -81,6 +91,10 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold text-[#0F172A]">
           Dashboard
         </h1>
+
+<button onClick={()=>signOut()}>
+Logout
+</button>
 
         <p className="text-[#64748B] mt-1">
           Welcome to the CrimeTak Admin Panel

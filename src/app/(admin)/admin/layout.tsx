@@ -1,6 +1,6 @@
 import "../../globals.css";
 import AdminSidebar from "./_components/AdminSidebar";
-
+         
 export default function AdminLayout({
   children,
 }: {
@@ -23,6 +23,8 @@ export default function AdminLayout({
           <h2 className="text-gray-900 font-semibold text-lg">
             Admin Dashboard
           </h2>
+
+ 
         </div>
 
         {/* Page Content */}
